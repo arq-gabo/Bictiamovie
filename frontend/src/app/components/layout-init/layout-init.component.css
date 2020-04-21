@@ -1,5 +1,5 @@
 #image-background{
-    background-image: url(/assets/images/background.jpg);
+    background-image: url(/assets/images/fondo.jpg);
     background-position: center center;
     background-size: cover;
     width: 100%;
@@ -10,8 +10,11 @@
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 20px;
+    
 }
-
-.jumbotron{
-    background-color: rgba(0, 0, 0, 0.0001);
+.color{
+    background-color: rgba(0, 0, 0, 0.3445);
+}
+.font{
+    position: relative;
 }
