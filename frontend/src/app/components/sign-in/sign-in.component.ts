@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  user = {
+    email: '',
+    password: ''
+  }
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+
+  signIn(){
+    this.userService.signIn(this.user)
+      .subscribe(
+        res => {
+          console.log(res);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/subaccount']);
+        },
+        err => console.log(err)
+      )
+  }
 }

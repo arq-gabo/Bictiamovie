@@ -12,24 +12,24 @@
                         </button>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form (submit)="signUp()">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Your Name">
+                                <input type="text" [(ngModel)]="user.name" name="name" id="name" class="form-control" placeholder="Enter Your Name" required autofocus>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Your Last Name">
+                                <input type="text" [(ngModel)]="user.lastname" name="lastname" id="lastname" class="form-control" placeholder="Enter Your Last Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Enter Your Email">
+                                <input type="email" [(ngModel)]="user.email" name="email" id="email" class="form-control" placeholder="Enter Your Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Enter Your Password">
+                                <input type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control" placeholder="Enter Your Password" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Your Password">
+                                <input type="password" [(ngModel)]="user.confirmpassword" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Confirm Your Password" required>
                             </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input type="checkbox" name="terms" id="terms" class="form-check-input">
                                 <label class="form-check-label">Accept the Conditions of Use</label>
                                 <div>
                                     <a class="font-small" routerLink="/terms">know the terms and conditions of use
