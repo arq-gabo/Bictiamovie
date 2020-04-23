@@ -1,29 +1,19 @@
+import { ApiService } from './api.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
-import { PagInitComponent } from './components/pag-init/pag-init.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-
-import { from } from 'rxjs';
-import { LayoutInitComponent } from './components/layout-init/layout-init.component';
-import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './components/login/login.component';
+import {HttpClientModule} from '@angular/common/http'; 
 @NgModule({
   declarations: [
-    AppComponent,
-    PagInitComponent,
-    SignUpComponent,
-    LayoutInitComponent,
-    LoginComponent
-  ],
+    AppComponent
+   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule
+
 
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
