@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 //components
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { SubaccountComponent } from './components/subaccount/subaccount.componen
 
 //guard
 import { UserGuard } from './user.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service'
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -48,7 +49,12 @@ const routes : Routes = [
     HttpClientModule
   ],
   providers: [
-    UserGuard
+    UserGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     private userService: UserService
   ) { }
 
+  //'setHeader'agrega una cabecera en cada petición
   intercept(req, next){
     const tokenizeReq = req.clone({
       setHeaders: {
