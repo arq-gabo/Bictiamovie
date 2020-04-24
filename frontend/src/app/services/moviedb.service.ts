@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
 export class MoviedbService {
 
   private apikey: string = "f9b276a8a665a41333c2def2f632a2e4";
-  private urlMoviedb: string = "https://api.themoviedb.org/3/discover/movie?api_key=ebcf7cf1284f605451ff076a6d5808b4&with_genres=12";
+  private urlMoviedb: string = "https://api.themoviedb.org/3/discover/movie?api_key=ebcf7cf1284f605451ff076a6d5808b4&with_genres=16";
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,7 @@ export class MoviedbService {
   }
 
   getDiscoverMovies() {
-    return this.getQuery("/discover/movie?api_key=ebcf7cf1284f605451ff076a6d5808b4&with_genres=27").pipe(
+    return this.getQuery("/discover/movie?api_key=ebcf7cf1284f605451ff076a6d5808b4&with_genres=16").pipe(
       map((data: any) => data.results)
     );
   }

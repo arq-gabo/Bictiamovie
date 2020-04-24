@@ -11,7 +11,7 @@ export class PeliculaComponent {
 
   // pelicula: any;
   pelicula: any = {};
-
+  nombre: String;
   loadingPelicula: boolean;
 
   constructor(private router: ActivatedRoute,
@@ -40,4 +40,10 @@ export class PeliculaComponent {
     } */
 
 
+}
+class iframe {
+  nombre: "underwater";
+  constructor(){
+    this.nombre; 
+  }
 }
