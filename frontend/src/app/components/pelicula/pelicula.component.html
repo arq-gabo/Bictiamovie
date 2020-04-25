@@ -19,10 +19,16 @@
                 Popularidad: <span class="badge badge-primary">{{ pelicula.popularity | number:".0-0" }}/10</span>
                 <br>
                 Voto promedio: <span class="badge badge-primary">{{ pelicula.vote_average }}</span>
-                
+                <br>
+                Nombre: {{pelicula.original_title}}
             </p>
-          <p></p>
-
+            <div *ngIf="Onward===pelicula.original_title">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Pds_3UZPmuQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               </div>
+               <div *ngIf="Mortal_Kombat===pelicula.original_title">
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/1h3mGwgc89o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
              <button [routerLink]="['/'+regresarA, busqueda ]" type="button" class="btn btn-outline-danger">
                 Regresar
             </button>

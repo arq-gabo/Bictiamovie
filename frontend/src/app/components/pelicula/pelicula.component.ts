@@ -11,8 +11,13 @@ export class PeliculaComponent {
 
   // pelicula: any;
   pelicula: any = {};
-  nombre: String;
   loadingPelicula: boolean;
+  //aqui va la implementacion para las iframe de youtobe
+
+
+  Onward: string ="Onward";
+  Mortal_Kombat: string= "Mortal Kombat Legends: Scorpions Revenge"; 
+  
 
   constructor(private router: ActivatedRoute,
     private moviedb: MoviedbService) {
@@ -41,9 +46,4 @@ export class PeliculaComponent {
 
 
 }
-class iframe {
-  nombre: "underwater";
-  constructor(){
-    this.nombre; 
-  }
-}
+
