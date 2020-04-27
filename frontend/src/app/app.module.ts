@@ -2,15 +2,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-import {
-  HttpClientModule,
-  HTTP_INTERCEPTORS,
-  HttpClientJsonpModule,
-} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from "@angular/common/http";
 
 //components  --
 import { AppComponent } from "./app.component";
-import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { JumbotronComponent } from "./components/jumbotron/jumbotron.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
@@ -49,7 +44,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     JumbotronComponent,
     FooterComponent,
     SignUpComponent,
@@ -64,7 +58,7 @@ const routes: Routes = [
     PeliculaComponent,
     TarjetasComponent,
     NavbarComponent,
-    PeliculaImagenPipe,
+    PeliculaImagenPipe
   ],
   imports: [
     BrowserModule,

@@ -17,23 +17,23 @@ export class MoviedbService {
   //Metodo para pasar URL para peticion
 
   getQuery(query: string) {
-    const url = `https://api.themoviedb.org/3${query}&api_key=${
+    const urlmovie = `https://api.themoviedb.org/3${query}&api_key=${
       this.apikey
       }&language=es&callback=JSONP_CALLBACK`;
 
     // Si la peticion se hace con http.get da error porque moviedb no acepta cross domain
     //por eso es importante verificar el uso de jsonp para poder hacer solicitud a otros dominios
-    return this.http.jsonp(url, "");
+    return this.http.jsonp(urlmovie, "");
   }
 
   getQueryforPelicula(query: string) {
-    const url = `https://api.themoviedb.org/3${query}?api_key=${
+    const urlmovie = `https://api.themoviedb.org/3${query}?api_key=${
       this.apikey
       }&language=es&callback=JSONP_CALLBACK`;
 
     // Si la peticion se hace con http.get da error porque moviedb no acepta cross domain
     //por eso es importante verificar el uso de jsonp para poder hacer solicitud a otros dominios
-    return this.http.jsonp(url, "");
+    return this.http.jsonp(urlmovie, "");
   }
 
   getDiscoverMovies() {
@@ -56,7 +56,7 @@ export class MoviedbService {
 
   // Otra alternativa para hacer la peticion
   /*   getDiscoverMovies() {
-  const url = `${
+  const urlmovie = `${
     this.urlMoviedb
   }/discover/movie?sort_by=popularity.desc&api_key=${
     this.apikey

@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+
+  //normalmente se usa intancia privada pero me genera un error, cambie a publico
+  // constructor( public userService: UserService) { }
   constructor() { }
 
   ngOnInit() {
