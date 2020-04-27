@@ -1,0 +1,38 @@
+<app-loading *ngIf="loadingPelicula"></app-loading>
+<div class="container main-container animated fadeIn fast">
+
+    <div class="row">
+
+        <div class="col-md-5">
+            <img [src]="pelicula | peliculaImagen" [alt]="pelicula.original_title" class="img-thumbnail img-fluid">
+        </div>
+
+
+        <div class="col-md-7">
+            <h3>Sinopsis</h3>
+            <hr>
+            <p class="text-justify">
+                {{ pelicula.overview }}
+            </p>
+
+            <p>
+                Popularidad: <span class="badge badge-primary">{{ pelicula.popularity | number:".0-0" }}/10</span>
+                <br>
+                Voto promedio: <span class="badge badge-primary">{{ pelicula.vote_average }}</span>
+                <br>
+                Nombre: {{pelicula.original_title}}
+            </p>
+            <div *ngIf="Onward===pelicula.original_title">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Pds_3UZPmuQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               </div>
+               <div *ngIf="Mortal_Kombat===pelicula.original_title">
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/1h3mGwgc89o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+             <button [routerLink]="['/'+regresarA, busqueda ]" type="button" class="btn btn-outline-danger">
+                Regresar
+            </button>
+     
+        </div>
+    </div>
+</div>
