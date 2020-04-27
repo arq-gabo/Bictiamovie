@@ -26,10 +26,14 @@ import { PeliculaImagenPipe } from "./pipes/pelicula-imagen.pipe";
 import { UserGuard } from "./user.guard";
 import { TokenInterceptorService } from "./services/token-interceptor.service";
 
-import { ROUTES } from "./app.routes";
 
-const routes: Routes = [
-  { path: "", component: HomeComponent },
+import { ROUTES } from "./app.routes";
+// // // import { RoutingModule } from "./modules/routing.module";
+
+/*const routes: Routes = [
+  // { path: "", component: HomeComponent },
+  { path: "", pathMatch: "full", redirectTo: "home" },
+  { path: "home", component: HomeComponent },
   { path: "signin", component: SignInComponent },
   { path: "signup", component: SignUpComponent },
   { path: "aboutus", component: AboutUsComponent },
@@ -39,7 +43,7 @@ const routes: Routes = [
     component: SubaccountComponent,
     canActivate: [UserGuard],
   },
-];
+];*/
 
 @NgModule({
   declarations: [
@@ -67,6 +71,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    // RoutingModule,
   ],
   providers: [
     UserGuard,
