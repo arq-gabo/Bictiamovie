@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  user = {
+  model = {
     email: '',
     password: ''
   }
@@ -22,16 +22,17 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+/*
   signIn(){
     this.userService.signIn(this.user)
       .subscribe(
         res => {
           console.log(res);
+          console.log(res.name);
           localStorage.setItem('token', res.token);
           this.router.navigate(['/subaccount']);
         },
         err => console.log(err)
       )
-  }
+  }*/
 }

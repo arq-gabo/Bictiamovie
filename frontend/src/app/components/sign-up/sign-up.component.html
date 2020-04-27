@@ -12,30 +12,58 @@
                         </button>
                     </div>
                     <div class="card-body">
-                        <form (submit)="signUp()">
+                            <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                            <!--Input Name-->
                             <div class="form-group">
-                                <input type="text" [(ngModel)]="user.name" name="name" id="name" class="form-control" placeholder="Enter Your Name" required autofocus>
+                                <input type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name" class="form-control" placeholder="Enter Your Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !name.valid }">
                             </div>
+                            <div *ngIf="signUpForm.submitted && !name.valid">
+                                <label class="">This field is required.</label>
+                            </div>
+
+                            <!--Input Last Name-->
                             <div class="form-group">
-                                <input type="text" [(ngModel)]="user.lastname" name="lastname" id="lastname" class="form-control" placeholder="Enter Your Last Name" required>
+                                <input type="text" #lastname="ngModel" [(ngModel)]="userService.selectedUser.lastname" name="lastname" class="form-control" placeholder="Enter Your Last Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !lastname.valid }">
                             </div>
+                            <div *ngIf="signUpForm.submitted && !lastname.valid">
+                                <label class="">This field is required.</label>
+                            </div>
+
+                            <!--Input Email-->
                             <div class="form-group">
-                                <input type="email" [(ngModel)]="user.email" name="email" id="email" class="form-control" placeholder="Enter Your Email" required>
+                            <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" class="form-control" placeholder="Email" required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
                             </div>
+                            <div *ngIf="signUpForm.submitted && email.errors">
+                              <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+                              <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+                            </div>
+
+                            <!--Input Password-->
                             <div class="form-group">
-                                <input type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control" placeholder="Enter Your Password" required>
+                            <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" class="form-control" name="password" placeholder="Password" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
                             </div>
+                            <div *ngIf="signUpForm.submitted && password.errors">
+                              <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                              <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+                            </div>
+
+                            <!--Input Confirm Password-->
                             <div class="form-group">
-                                <input type="password" [(ngModel)]="user.confirmpassword" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Confirm Your Password" required>
+                                <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Your Password" required>
                             </div>
+
+                            <!--Input CheckBosx confirm Terms-->
                             <div class="form-group form-check">
-                                <input type="checkbox" name="terms" id="terms" class="form-check-input">
+                                <input type="checkbox" name="terms" class="form-check-input">
                                 <label class="form-check-label">Accept the Conditions of Use</label>
                                 <div>
                                     <a class="font-small" routerLink="/terms">know the terms and conditions of use
                                         clicking here</a>
                                 </div>
                             </div>
+
+                            <input type="text" #role="ngModel" [(ngModel)]="userService.selectedUser.role" name="role" [value]="'USER'" hidden>
+
                             <button class="btn btn-warning btn-block">
                                 Sign Up
                             </button>

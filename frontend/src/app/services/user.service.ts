@@ -1,40 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../environments/environment';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private URL = 'http://localhost:3000/api'
-
-  constructor(
-    private http: HttpClient,
-    private router: Router
-    ) { }
-
-  signUp(user){
-    return this.http.post<any>(this.URL + '/users/signup', user);
+  selectedUser: User = {
+    _id: '',
+    name: '',
+    lastname: '',
+    email: '',
+    password: '',
+    role: 'USER'
   }
 
-  signIn(user){
-    return this.http.post<any>(this.URL + '/users/signin', user);
-  }
+  constructor(private http: HttpClient) { }
 
-  //metodo para saber si el usuario esta logueado
-  loggedIn() {
-    return !!localStorage.getItem('token');
-  }
-
-  //metodo para retornar el token desde el localStorage
-  getToken(){
-    return localStorage.getItem('token');
-  }
-
-  //metodo para cerrar sesion, solo elimina el token
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['signin'])
-  }
+    postUser(user: User){
+      return this.http.post(environment.apiUrl+'/register', user)
+    }
+  
 }

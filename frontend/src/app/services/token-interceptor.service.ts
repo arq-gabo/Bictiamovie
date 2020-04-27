@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { HttpInterceptor } from '@angular/common/http';
 
 import { UserService } from '../services/user.service';
@@ -22,3 +22,4 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(tokenizeReq);
   }
 }
+*/

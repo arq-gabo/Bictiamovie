@@ -17,8 +17,8 @@ import { TermsComponent } from './components/terms/terms.component';
 import { SubaccountComponent } from './components/subaccount/subaccount.component';
 
 //guard
-import { UserGuard } from './user.guard';
-import { TokenInterceptorService } from './services/token-interceptor.service'
+//import { UserGuard } from './user.guard';
+//import { TokenInterceptorService } from './services/token-interceptor.service'
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -26,7 +26,7 @@ const routes : Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'terms', component: TermsComponent},
-  { path: 'subaccount', component: SubaccountComponent, canActivate: [UserGuard]}
+  { path: 'subaccount', component: SubaccountComponent}
 ];
 
 @NgModule({
@@ -49,13 +49,13 @@ const routes : Routes = [
     HttpClientModule
   ],
   providers: [
-    UserGuard,
+  /*  UserGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
     }
-  ],
+  */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

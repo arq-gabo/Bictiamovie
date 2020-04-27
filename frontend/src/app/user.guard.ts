@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -8,9 +8,9 @@ import { UserService } from './services/user.service';
   providedIn: 'root'
 })
 
-/*'UserGuard' funcion para verificar si existe un token o no, si existe retorna true
+'UserGuard' funcion para verificar si existe un token o no, si existe retorna true
 y muestra los datos, caso contrario retorna false y nos redirecciona a signin para 
-obtener un token*/
+obtener un token
 
 export class UserGuard implements CanActivate {
 
@@ -27,5 +27,7 @@ export class UserGuard implements CanActivate {
     this.router.navigate(['/signin']);
     return false;
   }
-  
+ 
 }
+
+ */
