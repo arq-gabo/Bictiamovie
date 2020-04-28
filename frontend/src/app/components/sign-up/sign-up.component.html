@@ -31,7 +31,7 @@
 
                             <!--Input Email-->
                             <div class="form-group">
-                            <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" class="form-control" placeholder="Email" required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+                            <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" class="form-control" placeholder="Enter your Email" required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
                             </div>
                             <div *ngIf="signUpForm.submitted && email.errors">
                               <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
@@ -40,7 +40,7 @@
 
                             <!--Input Password-->
                             <div class="form-group">
-                            <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" class="form-control" name="password" placeholder="Password" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+                            <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" class="form-control" name="password" placeholder="Enter your Password" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
                             </div>
                             <div *ngIf="signUpForm.submitted && password.errors">
                               <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
@@ -62,8 +62,10 @@
                                 </div>
                             </div>
 
+                            <!--Role hidden-->
                             <input type="text" #role="ngModel" [(ngModel)]="userService.selectedUser.role" name="role" [value]="'USER'" hidden>
 
+                            <!--button-->
                             <button class="btn btn-warning btn-block">
                                 Sign Up
                             </button>

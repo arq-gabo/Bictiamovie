@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -8,10 +9,17 @@ import { UserService } from '../../services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  //normalmente se usa intancia privada pero me genera un error, cambie a publico
-  constructor( public userService: UserService) { }
+  public userDetails: any;
+
+  constructor( public userService: UserService,
+                private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
+  onLogout(){
+    this.userService.deleteToken();
+    this.router.navigate(['/'])
+  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -9,30 +11,32 @@ import { UserService } from '../../services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  model = {
-    email: '',
-    password: ''
-  }
-
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
+  user = {
+    email: '',
+    password: ''
+  }
+  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  serverErrorMessages: string;
+
   ngOnInit(): void {
   }
 
-/*
-  signIn(){
-    this.userService.signIn(this.user)
-      .subscribe(
-        res => {
-          console.log(res);
-          console.log(res.name);
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/subaccount']);
-        },
-        err => console.log(err)
-      )
-  }*/
+  onSubmit(form : NgForm){
+    this.userService.login(form.value).subscribe(
+      res => {
+        this.userService.setToken(res['token']);
+        alert('Welcome to bictia Movies')
+        this.router.navigateByUrl('/subaccount');
+      },
+      err => {
+        this.serverErrorMessages = err.error.message;
+        alert(this.serverErrorMessages);
+      }
+    );
+  }
 }

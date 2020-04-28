@@ -15,10 +15,11 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { SubaccountComponent } from './components/subaccount/subaccount.component';
+import { UserService } from './services/user.service';
 
 //guard
-//import { UserGuard } from './user.guard';
-//import { TokenInterceptorService } from './services/token-interceptor.service'
+import { UserGuard } from './user.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service'
 
 const routes : Routes = [
   { path: '', component: HomeComponent},
@@ -26,7 +27,7 @@ const routes : Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'terms', component: TermsComponent},
-  { path: 'subaccount', component: SubaccountComponent}
+  { path: 'subaccount', component: SubaccountComponent, canActivate:[UserGuard]}
 ];
 
 @NgModule({
@@ -48,14 +49,14 @@ const routes : Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [
-  /*  UserGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
-  */],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  },
+    UserService,
+    UserGuard    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
