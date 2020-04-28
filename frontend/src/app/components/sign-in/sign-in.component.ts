@@ -29,6 +29,7 @@ export class SignInComponent implements OnInit {
   onSubmit(form : NgForm){
     this.userService.login(form.value).subscribe(
       res => {
+        console.log(res);
         this.userService.setToken(res['token']);
         alert('Welcome to bictia Movies')
         this.router.navigateByUrl('/subaccount');

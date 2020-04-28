@@ -12,10 +12,10 @@ module.exports.register = (req, res, next) => {
     user.password = req.body.password;
     user.role = req.body.role;
     user.save((err, doc) => {
-        if(!err)
-            res.send(doc);
-        else
-        {
+        if(!err){      
+            //res.send(doc);
+            res.status(200).json({"token": user.generateJwt()});
+        } else {
             if (err.code == 11000)
                 res.status(422).send(['Duplicate email adrress found.']);
             else

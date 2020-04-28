@@ -27,8 +27,9 @@ export class SignUpComponent implements OnInit {
     this.userService.postUser(form.value).subscribe(
       res =>{
         console.log(res);
+        this.userService.setToken(res['token']);
         alert('Welcome to Bictia Movies');
-        this.router.navigate(['/subaccount']);
+        this.router.navigateByUrl('/subaccount');
       },
       err => {
         if(err.status === 422){
@@ -43,4 +44,5 @@ export class SignUpComponent implements OnInit {
       }
     )
   }
+  
 }
