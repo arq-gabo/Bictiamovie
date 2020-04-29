@@ -15,6 +15,8 @@ export class SignUpComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessages: string;
 
+  marked = false;
+
   constructor(public userService: UserService,
               private router: Router
               ) {}
@@ -44,5 +46,8 @@ export class SignUpComponent implements OnInit {
       }
     )
   }
-  
+
+  toggleVisibility(e){
+    this.marked= e.target.checked;
+  }
 }
