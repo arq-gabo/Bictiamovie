@@ -10,18 +10,4 @@
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 20px;
-    color:  rgb(245, 204, 23);
-}
-.jumbotron{
-    background-color: rgba(0, 0, 0, 0.5555);
-}
-.blockw {
-    height: 350px; 
-    }
-.logo{
-    width: 150px;
-    border-radius: 12px;
-}
-body{
-    color:  rgb(245, 204, 23);
 }

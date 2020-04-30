@@ -1,0 +1,90 @@
+
+<div class="overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Sign Up<a class="font-small" routerLink="/signin"> or make login</a>
+                        <button class="close" routerLink="/">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                            <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+                            <!--Input Name-->
+                            <div class="form-group">
+                                <input type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name" class="form-control" placeholder="Enter Your Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !name.valid }">
+                            </div>
+                            <div *ngIf="signUpForm.submitted && !name.valid">
+                                <h6 class="text-danger text-center font-small">This field is required.</h6>
+                            </div>
+
+                            <!--Input Last Name-->
+                            <div class="form-group">
+                                <input type="text" #lastname="ngModel" [(ngModel)]="userService.selectedUser.lastname" name="lastname" class="form-control" placeholder="Enter Your Last Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !lastname.valid }">
+                            </div>
+                            <div *ngIf="signUpForm.submitted && !lastname.valid">
+                                <h6 class="text-danger text-center font-small">This field is required.</h6>
+                            </div>
+
+                            <!--Input Email-->
+                            <div class="form-group">
+                            <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" class="form-control" placeholder="Enter your Email" required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+                            </div>
+                            <div *ngIf="signUpForm.submitted && email.errors">
+                              <h6 *ngIf="email.errors.required" class="validation-message text-danger text-center font-small">This field is required.</h6>
+                              <h6 *ngIf="email.errors.pattern" class="validation-message text-danger text-center font-small">Invalid email address.</h6>
+                            </div>
+
+                            <!--Input Password-->
+                            <div class="form-group">
+                            <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" class="form-control" name="password" id="password" placeholder="Enter your Password" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }"/>
+                            </div>
+                            <div *ngIf="signUpForm.submitted && password.errors">
+                              <h6 *ngIf="password.errors.required" class="validation-message text-danger text-center font-small">This field is required.</h6>
+                              <h6 *ngIf="password.errors.minlength" class="validation-message text-danger text-center font-small">Enter atleast 4 characters.</h6>
+                            </div>
+
+                            <!--Input Confirm Password-->
+                            <div class="form-group">
+                                <input type="password" #confirmpassword="ngModel" [(ngModel)]="userService.selectedUser.confirmpassword" class="form-control" name="confirmpassword" id="confirmPassword" placeholder="Confirm Your Password" minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !confirmpassword.valid }"/>
+                            </div>
+                            <div *ngIf="signUpForm.submitted && confirmpassword.errors">
+                                <h6 *ngIf="confirmpassword.errors.required" class="validation-message text-danger text-center font-small">This field is required.</h6>
+                                <h6 *ngIf="confirmpassword.errors.minlength" class="validation-message text-danger text-center font-small">Enter atleast 4 characters.</h6>
+                                <!--<h6 *ngIf="password.value != confirmpassword.value" class="validation-message text-danger text-center font-small">The value is same</h6>-->
+                              </div>
+                            <div *ngIf="signUpForm.submitted && (password.value != confirmpassword.value)">
+                                <h6 class="text-danger text-center font-small">The passwords does not match</h6>
+                            </div>
+                                        
+                            <!--Input CheckBosx confirm Terms-->
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="terms" class="form-check-input" data-md-icheck (change)="toggleVisibility($event)" required [ngClass]="{'invalid-textbox' :signUpForm.submitted}">
+                                <label class="form-check-label" >Accept the Conditions of Use</label>
+
+                                <div *ngIf="signUpForm.submitted">
+                                <h6 *ngIf="!marked" class="text-danger text-center font-small">Accept the terms of use</h6>
+                                </div>
+                                
+                                <div>
+                                    <a class="font-small" routerLink="/terms">know the terms and conditions of use
+                                        clicking here</a>
+                                </div>                                                               
+                            </div>
+
+                            <!--Role hidden-->
+                            <input type="text" #role="ngModel" [(ngModel)]="userService.selectedUser.role" name="role" [value]="'USER'" hidden>
+
+                            <!--button-->
+                            <button id="btnPassword" class="btn btn-warning btn-block">
+                                Sign Up
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
