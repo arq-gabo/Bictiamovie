@@ -1,10 +1,31 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+const nodemailer = require('nodemailer');
 
 const User = mongoose.model('User');
 
 module.exports.register = (req, res, next) => {
+
+    //Envio de email
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'jgabrielguerral@gmail.com',
+            pass: 'jggl2159'
+        }
+    });
+
+    let sendEmail = req.body.email;
+    let name = req.body.name;
+    let lastname = req.body.lastname;
+    let mailOptions = {
+        from: 'jgabrielguerral@gmail.com',
+        to: sendEmail,
+        subject: 'Welcome to Bictia Movies',
+        text: 'This is a registration confirmation email, thanks for registering in Bictia Movie'
+    };
+
     var user = new User();
     user.name = req.body.name;
     user.lastname = req.body.lastname;
@@ -13,8 +34,17 @@ module.exports.register = (req, res, next) => {
     user.role = req.body.role;
     user.save((err, doc) => {
         if(!err){      
-            //res.send(doc);
             res.status(200).json({"token": user.generateJwt()});
+
+            //funcion de envio de email
+            transporter.sendMail(mailOptions, function(err, data){
+                if (err){
+                    console.log('Ocurrio un Error');
+                } else {
+                    console.log('Email sent...!!!');
+                }
+            })
+
         } else {
             if (err.code == 11000)
                 res.status(422).send(['Duplicate email adrress found.']);
