@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http'
+// import { HttpClientJsonModule } from '@angular/common/http'
 //components
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -19,16 +19,19 @@ import { UserService } from './services/user.service';
 
 //guard
 import { UserGuard } from './user.guard';
-import { TokenInterceptorService } from './services/token-interceptor.service'
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { MainDashboardComponent } from './components/subaccount/main-dashboard/main-dashboard.component';
+import { NavBarSubaccountComponent } from './components/nav-bar-subaccount/nav-bar-subaccount.component';
+import { PeliculasComponent } from './components/subaccount/peliculas/peliculas.component';
+import { DocumentalesComponent } from './components/subaccount/documentales/documentales.component';
+import { SeriesComponent } from './components/subaccount/series/series.component';
+import { FavoritosComponent } from './components/subaccount/favoritos/favoritos.component';
+import { BuscarComponent } from './components/subaccount/buscar/buscar.component';
+import { LoadingComponent } from './components/subaccount/loading/loading.component';
+import { CartasComponent } from './components/subaccount/cartas/cartas.component'
+import { from } from 'rxjs';
 
-const routes : Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'signin', component: SignInComponent },
-  { path: 'signup', component: SignUpComponent},
-  { path: 'aboutus', component: AboutUsComponent},
-  { path: 'terms', component: TermsComponent},
-  { path: 'subaccount', component: SubaccountComponent, canActivate:[UserGuard]}
-];
+
 
 @NgModule({
   declarations: [
@@ -41,13 +44,24 @@ const routes : Routes = [
     HomeComponent,
     AboutUsComponent,
     TermsComponent,
-    SubaccountComponent
+    SubaccountComponent,
+    MainDashboardComponent,
+    NavBarSubaccountComponent,
+    PeliculasComponent,
+    DocumentalesComponent,
+    SeriesComponent,
+    FavoritosComponent,
+    BuscarComponent,
+    LoadingComponent,
+    CartasComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    HttpClientJsonModule,
+    RouterModule.forRoot(routes,{useHash:true}),
     FormsModule,
     HttpClientModule
+    
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

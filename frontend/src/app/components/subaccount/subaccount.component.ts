@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService} from '../../services/user.service';
+import { MoviedbService} from '../../components/subaccount/moviedb.service';
 
 
 @Component({
@@ -12,7 +13,11 @@ export class SubaccountComponent implements OnInit {
   
   userDetails;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    public _ms:MoviedbService) {
+    this._ms.getDiscoverMovies().subscribe(data=>console.log(data));
    }
 
   ngOnInit(): void {
@@ -25,4 +30,5 @@ export class SubaccountComponent implements OnInit {
       }
     )
   }
+
 }

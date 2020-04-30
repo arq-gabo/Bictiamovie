@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/banner-ico.png" width="30" height="30" alt="" />
+      Bictiamovie kids +
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+           <!-- <a class="nav-link" routerLink="home">Home</a> --> 
+           <a class="nav-link" routerLink="peliculas">Peliculas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+           <!-- <a class="nav-link" routerLink="search">Search</a> --> 
+           <a class="nav-link" routerLink="documentales">Documentales</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+            <!-- <a class="nav-link" routerLink="search">Search</a> --> 
+            <a class="nav-link" routerLink="series">Series</a>
+         </li>
+
+
+         <li class="nav-item" routerLinkActive="active">
+           <!-- <a class="nav-link" routerLink="search">favorites</a> --> 
+           <a class="nav-link" routerLink="favoritos">Favoritos</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+            <!-- <a class="nav-link" routerLink="search">favorites</a> --> 
+            <a class="nav-link" routerLink="buscar">buscar</a>
+         </li>
+
+
+
+
+      </ul>
+      <form class="form-inline">
+        <ng-container *ngIf="!userService.isLoggedIn(); else isLoggedIn">
+          <button class="btn btn-outline-warning my-2 my-sm-0" routerLink="/signin">Sign In</button>
+        </ng-container>
+        <ng-template #isLoggedIn>
+          <button class="btn btn-outline-warning my-2 my-sm-0" (click)="onLogout()">Sign Out</button>
+        </ng-template>
+      </form>
+    </div>
+  </nav>
+
