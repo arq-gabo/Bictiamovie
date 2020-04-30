@@ -11,8 +11,8 @@ module.exports.register = (req, res, next) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'jgabrielguerral@gmail.com',
-            pass: 'jggl2159'
+            user: '',
+            pass: ''
         }
     });
 
@@ -20,7 +20,7 @@ module.exports.register = (req, res, next) => {
     let name = req.body.name;
     let lastname = req.body.lastname;
     let mailOptions = {
-        from: 'jgabrielguerral@gmail.com',
+        from: '',
         to: sendEmail,
         subject: 'Welcome to Bictia Movies',
         text: 'This is a registration confirmation email, thanks for registering in Bictia Movie'
